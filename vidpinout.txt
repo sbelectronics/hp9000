@@ -1,0 +1,33 @@
+> Mono (HP9836A)
+> 1 : Gnd (Intensity)
+> 2 : Gnd (spare)
+> 3 : N/C
+> 4 : Gnd
+> 5 : -12V
+> 6 : Gnd
+> 7 : +12V (Power to monitor)
+> 8 : Chassis/
+> 9 : Intensity
+> 10 : Spare
+> 11 : Spare
+> 12 : Video
+> 13 : Gnd (Video)
+> 14 : HSync
+> 15 : VSync
+>
+> Colour (HP9836C)
+> 1 : Gnd (B)
+> 2 : Gnd (G)
+> 3 : B/C
+> 4 : Gnd
+> 5 : -12V
+> 6 ; Gnd
+> 7 : +12V (for monitor power relay)
+> 8 : Chassis
+> 9 : Blue
+> 10 : Green
+> 11 : HSync
+> 12 : Red
+> 13 : Gnd(R)
+> 14 : VBlank
+> 15 : VSync

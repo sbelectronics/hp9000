@@ -1,0 +1,77 @@
+name hprom;
+device g16v8;
+partno x;
+date 1/1/1980;
+designer smbaker;
+company sbsoftware;
+revision 1;
+assembly x;
+location x;
+
+PIN 1 = !HPW;
+PIN 2 = A19;
+PIN 3 = A20; 
+PIN 4 = A21;
+PIN 5 = A22;
+PIN 6 = A23;
+PIN 7 = EXTRA1;
+PIN 8 = EXTRA2;
+PIN 9 = EXTRA3;
+PIN 10 = GND;
+PIN 11 = !BAS;
+PIN 12 = !BOARDCS;
+PIN 13 = !WR;
+PIN 14 = !RD;
+PIN 15 = !RAM4_CS;
+PIN 16 = !RAM3_CS;
+PIN 17 = !RAM2_CS;
+PIN 18 = !RAM1_CS;
+PIN 19 = !FLASH_CS;
+PIN 20 = VCC;
+
+FIELD MEMADR = [A23..19] ;
+
+/* Memory Map
+ *   Boot Rom  = 000000 - 003FFF
+ *   Block 1   = 020000 - 03FFFF
+ *   Block 2   = 040000 - 05FFFF   *** Basic 4.0 Here (BA19=1, All others 0)
+ *   Block 3   = 060000 - 07FFFF
+ *   Block 4   = 080000 - 09FFFF
+ *   Block 5   = 0A0000 - 0BFFFF
+ *   ...
+ *             = 100000 - 1FFFFF   *** Basic 5.1 here?
+ *   ...
+ *   Block 31  = 3E0000 - 3FFFFF
+ *   Int IO    = 400000 - 5FFFFF
+ *   Ext IO    = 600000 - 7FFFFF
+ *   Test Mon  = 800000 - 8FFFFF
+ *   RAM       = 900000 - FFFFFF
+ *
+ * Note: Basic 3.0 image probably goes in the upper half of the ROMs.
+ *
+ * Note: Basic 5.1 image is U1-U6 evens; U9-U14 odds
+ *
+ * Note: 16-bit addressing can be confusing. Dom's schematic clearly
+ *       shows the ROM CS at BA19=1. This is word address 040000, but it
+ *       is byte address 080000. This is reinforced by the 9836 manual 
+ *       stating that the first 512K board starts at 0x80000.
+ */
+
+FLASH_SELECT = BAS & MEMADR :[080000..09FFFF] ;
+RAM1_SELECT = BAS & MEMADR :[900000..9FFFFF] ;
+RAM2_SELECT = BAS & MEMADR :[A00000..AFFFFF] ;
+RAM3_SELECT = BAS & MEMADR :[B00000..BFFFFF] ;
+RAM4_SELECT = BAS & MEMADR :[C00000..CFFFFF] ;
+
+FLASH_CS = FLASH_SELECT;
+
+RAM1_CS = RAM3_SELECT; // temporary, map RAM1 to 2MB start
+
+//RAM1_CS = RAM1_SELECT;
+//RAM2_CS = RAM2_SELECT;
+//RAM3_CS = RAM3_SELECT;
+//RAM4_CS = RAM4_SELECT;
+
+WR = HPW & BAS;
+RD = !HPW & BAS;
+BOARDCS = (FLASH_SELECT # RAM3_SELECT) & BAS;

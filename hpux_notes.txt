@@ -1,0 +1,5 @@
+https://groups.io/g/VintHPcom/topic/75040486?p=Created,,,20,1,0,0::recentpostdate%2Fsticky,,,20,2,20,75040486
+
+HP-UX 2.1 works only on 68000 based systems (i.e. not the 217 nor upgraded 220/226/236)
+HP-UX 2.2L is basically 2.x for the 217 (but <shrug> I don't think there was a 217 with an older CPU board so who knows what they're trying to say there)
+HP-UX 5.1 requires a 68010 (217, upgraded 220/226/236)

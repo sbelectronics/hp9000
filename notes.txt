@@ -1,0 +1,7 @@
+Basic commands
+   # format disk
+   INITIALIZE ":INTERNAL"
+      maybe ":INTERNAL,4,1" to select the other disk (4 is select code)
+
+   # list directory
+   CAT

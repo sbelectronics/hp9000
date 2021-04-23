@@ -1,0 +1,60 @@
+%SIGNAL
+PIN   2 =  A19 
+PIN   3 =  A20 
+PIN   4 =  A21 
+PIN   5 =  A22 
+PIN   6 =  A23 
+PIN  11 = !BAS 
+PIN  12 = !BOARDCS 
+PIN   7 =  EXTRA1 
+PIN   8 =  EXTRA2 
+PIN   9 =  EXTRA3 
+PIN  19 = !FLASH_CS 
+PIN  10 =  GND 
+PIN   1 = !HPW 
+PIN  18 = !RAM1_CS 
+PIN  17 = !RAM2_CS 
+PIN  16 = !RAM3_CS 
+PIN  15 = !RAM4_CS 
+PIN  14 = !RD 
+PIN  20 =  VCC 
+PIN  13 = !WR 
+%END
+
+%FIELD
+FIELD MEMADR = A23,A22,A21,A20,A19
+%END
+
+%EQUATION
+BOARDCS =>
+    A20 & A21 & !A22 & A23 & !BAS
+  # A19 & !A20 & !A21 & !A22 & !A23 & !BAS
+
+FLASH_CS =>
+    A19 & !A20 & !A21 & !A22 & !A23 & !BAS
+
+FLASH_SELECT =>
+    A19 & !A20 & !A21 & !A22 & !A23 & BAS
+
+RAM1_CS =>
+    A20 & A21 & !A22 & A23 & !BAS
+
+RAM1_SELECT =>
+    A20 & !A21 & !A22 & A23 & BAS
+
+RAM2_SELECT =>
+    !A20 & A21 & !A22 & A23 & BAS
+
+RAM3_SELECT =>
+    A20 & A21 & !A22 & A23 & BAS
+
+RAM4_SELECT =>
+    !A20 & !A21 & A22 & A23 & BAS
+
+RD =>
+    !BAS & HPW
+
+WR =>
+    !BAS & !HPW
+
+%END

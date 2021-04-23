@@ -1,0 +1,217 @@
+{COMPONENT Y:\PROJECTS\PI\HP9836\FLASHBOARD-BLDS\HPROM2.SYM
+
+ {ENVIRONMENT
+  {PDIFvrev 3.00}
+  {Program "CUPL(WM) Version 5.0a"}
+  {DBtype "Schematic"}
+  {DBvrev 1.01}
+  {DBtime "Fri Apr 23 14:45:11 2021 "}
+  {DBunit "MIL"}
+  {DBgrid 10}
+  {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
+          "PINNAM" 6 "PINCON" 4 "REFDES" 2 "ATTR" 6 "SDOT" 1 
+          "DEVICE" 5 "OUTLIN" 5 "ATTR2" 6 "NOTES" 6 "NETNAM" 4 
+          "CMPNAM" 5 "BORDER" 5}
+ }
+
+ {USER
+  {VIEW
+   {Mode SYMB}
+   {Nlst OPEN}
+   {Vw 0 0 2}
+   {Lv 12 2 2 2 0 0 2 2 2 2 0 0 2 1 2 0 0 0 0}
+   {Gs 10 10}
+  }
+ }
+
+ {DISPLAY
+  [Ly "PINNUM"]
+  [Ls "SOLID"][Wd 0]
+  [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+ }
+
+ {SYMBOL
+  {PIN_DEF
+   [Ly "PINCON"]
+   {P HPW' {Pt "INPUT"}{Lq 0}{Ploc 100 340}}
+   {P A19 {Pt "INPUT"}{Lq 0}{Ploc 100 320}}
+   {P A20 {Pt "INPUT"}{Lq 0}{Ploc 100 300}}
+   {P A21 {Pt "INPUT"}{Lq 0}{Ploc 100 280}}
+   {P A22 {Pt "INPUT"}{Lq 0}{Ploc 100 260}}
+   {P A23 {Pt "INPUT"}{Lq 0}{Ploc 100 240}}
+   {P BLDS' {Pt "INPUT"}{Lq 0}{Ploc 100 220}}
+   {P BUDS' {Pt "INPUT"}{Lq 0}{Ploc 100 200}}
+   {P EXTRA3 {Pt "INPUT"}{Lq 0}{Ploc 100 180}}
+   {P GND {Pt "INPUT"}{Lq 0}{Ploc 100 160}}
+   {P BAS' {Pt "INPUT"}{Lq 0}{Ploc 100 140}}
+   {P BOARDCS' {Pt "INPUT"}{Lq 0}{Ploc 100 120}}
+   {P WRL' {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
+   {P RD' {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
+   {P RAM2_CS' {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
+   {P RAM1_CS' {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
+   {P FLASH_CS' {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
+   {P WRH' {Pt "I/O"}{Lq 0}{Ploc 350 20}}
+   {P RAM3_CS' {Pt "I/O"}{Lq 0}{Ploc 350 40}}
+   {P VCC {Pt "OUTPUT"}{Lq 0}{Ploc 350 60}}
+  }
+
+  {PKG
+   [Ly "REFDES"]
+   [Ts 25][Tj "CB"][Tr 0][Tm "N"]
+   {Rdl 225 370}
+
+   [Ly "PINNUM"]
+   [Ts 15][Tj "RC"]
+   {Pnl 120 350}
+   {Pnl 120 330}
+   {Pnl 120 310}
+   {Pnl 120 290}
+   {Pnl 120 270}
+   {Pnl 120 250}
+   {Pnl 120 230}
+   {Pnl 120 210}
+   {Pnl 120 190}
+   {Pnl 120 170}
+   {Pnl 120 150}
+   {Pnl 120 130}
+   {Pnl 120 110}
+   {Pnl 120 90}
+   {Pnl 120 70}
+   {Pnl 120 50}
+   {Pnl 120 30}
+   [Ts 15][Tj "LC"]
+   {Pnl 330 30}
+   {Pnl 330 50}
+   {Pnl 330 70}
+
+   {Sd A 1 2 3 4 5 6 7 8 9 10 11 12 13 14 17 18 19 15 16 20}
+  }
+
+  {PIC
+   [Ly "GATE"]
+   [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+   {R 130 360 320 0}
+   {L 120 340 100 340}
+   {C 125 340 5}
+   {L 130 320 100 320}
+   {L 130 300 100 300}
+   {L 130 280 100 280}
+   {L 130 260 100 260}
+   {L 130 240 100 240}
+   {L 120 220 100 220}
+   {C 125 220 5}
+   {L 120 200 100 200}
+   {C 125 200 5}
+   {L 130 180 100 180}
+   {L 130 160 100 160}
+   {L 120 140 100 140}
+   {C 125 140 5}
+   {L 120 120 100 120}
+   {C 125 120 5}
+   {L 120 100 100 100}
+   {C 125 100 5}
+   {L 120 80 100 80}
+   {C 125 80 5}
+   {L 120 60 100 60}
+   {C 125 60 5}
+   {L 120 40 100 40}
+   {C 125 40 5}
+   {L 120 20 100 20}
+   {C 125 20 5}
+   {C 325 20 5}
+   {L 330 20 350 20}
+   {C 325 40 5}
+   {L 330 40 350 40}
+   {L 320 60 350 60}
+   [Ly "PINNAM"]
+   [Tj "LC"]
+   {T "HPW'" 140 340}
+   {T "A19" 140 320}
+   {T "A20" 140 300}
+   {T "A21" 140 280}
+   {T "A22" 140 260}
+   {T "A23" 140 240}
+   {T "BLDS'" 140 220}
+   {T "BUDS'" 140 200}
+   {T "EXTRA3" 140 180}
+   {T "GND" 140 160}
+   {T "BAS'" 140 140}
+   {T "BOARDCS'" 140 120}
+   {T "WRL'" 140 100}
+   {T "RD'" 140 80}
+   {T "RAM2_CS'" 140 60}
+   {T "RAM1_CS'" 140 40}
+   {T "FLASH_CS'" 140 20}
+   [Tj "RC"]
+   {T "WRH'" 310 20}
+   {T "RAM3_CS'" 310 40}
+   {T "VCC" 310 60}
+   [Ly "DEVICE"]
+   [Tj "CT"]
+   {T "G16V8S" 225 -10}
+  }
+
+  {ATR
+   {IN
+    {Org 100 20}
+    {Ty 255}
+   }
+   {EX
+    [Ly "ATTR2"]
+    [Ts 12][Tj "CT"][Tr 0][Tm "N"]
+    {At PLD Y:\PROJECTS\PI\HP9836\FLASHBOARD-BLDS\HPROM2 225 360}
+   }
+  }
+ }
+
+ {DETAIL
+  {ANNOTATE
+  }
+
+  {NET_DEF
+   {N HPW'
+   }
+   {N A19
+   }
+   {N A20
+   }
+   {N A21
+   }
+   {N A22
+   }
+   {N A23
+   }
+   {N BLDS'
+   }
+   {N BUDS'
+   }
+   {N EXTRA3
+   }
+   {N GND
+   }
+   {N BAS'
+   }
+   {N BOARDCS'
+   }
+   {N WRL'
+   }
+   {N RD'
+   }
+   {N RAM2_CS'
+   }
+   {N RAM1_CS'
+   }
+   {N FLASH_CS'
+   }
+   {N WRH'
+   }
+   {N RAM3_CS'
+   }
+   {N VCC
+   }
+  }
+
+  {SUBCOMP
+  }
+ }
+}

@@ -1,0 +1,47 @@
+general notes:
+  * ROM tests good
+  * RAM tests good
+  
+ideas:
+
+  * check EClk and QClk
+  * check HPIBCS on 8291, see if self-test is accessing it
+
+suspected checksum algorithm:
+
+ef2d: 4f              CLRA
+ef2e: 5f              CLRB
+ef2f: 8e e0 00        LDX   #$E000
+ef32: 30 02           LEAX  $2,X
+ef34: 10 8e e0 00     LDY   #$E000
+ef38: e3 81           ADDD  ,X++
+ef3a: 8c 00 00        CMPX  #$0000
+ef3d: 26 f9           BNE   $EF38
+ef3f: 12              NOP
+ef40: 10 a3 a4        CMPD  ,Y
+ef43: 27 02           BEQ   $EF47
+ef45: 20 40           BRA   $EF87
+
+suspected led blinker:
+
+ef87: 86 40           LDA   #$40
+ef89: 97 00           STA   $00
+ef8b: 8e 00 00        LDX   #$0000
+ef8e: 30 1f           LEAX  -$1,X
+ef90: 26 fc           BNE   $EF8E
+ef92: 86 40           LDA   #$40
+ef94: 43              COMA
+ef95: 97 00           STA   $00
+ef97: 8e 00 00        LDX   #$0000
+ef9a: 30 1f           LEAX  -$1,X
+ef9c: 26 fc           BNE   $EF9A
+ef9e: 20 e7           BRA   $EF87
+
+address decode
+
+0x00 - 0x1F = output port
+0x20 - 0x3F = input port
+0x40 - 0x5F = HIPB
+0x60 = buffsel
+0x66 = wrHS
+0x67 = data

@@ -1,0 +1,45 @@
+36592A HP-UX SNA Link to IBM 370
+36593A HP-UX SNA Link to IBM 370
+36941A X.25 Link
+
+50955A IBM 3278 Display Station Emulator
+50962A Shared Resource Management (SRM) was an HP networking system
+
+98171A LAN coax card 
+98287A to 98700 display
+98235A AUI LAN card
+98237A coax LAN card
+98253A EPROM Development
+98255A EPROM card
+98256A 256K RAM
+98257A 1M RAM
+98259A 128 K Bubble
+98286D DOS Coprocessor
+98542A 512x400 monochrome output to 35731A display
+98543A 512x400 4 Color output to 35741A
+98544B 1024x768 monochrome output to 98786A
+98546A 200 series compatability display
+98547A 1024x768 RGB Video output to 98751A or 98785A
+98549A 1024x768 RGB Video output to 98751A or 98785A
+98574A Super hi-res display
+98603A ROM-based Basic
+98622A 16 bit General Purpose I/O 
+98623A 43 line BCD I/O typically used for older non HP-IB instruments
+98624A Standard HP-IB typically used for instruments, maybe more than one in a system
+98625B High-Speed HP-IB typically used for hard drives
+98626A Single port RS-232 typically used for modem, terminal,printer,plotter, etc.
+98628A Single port Data Com RS-232, RS-422, RS-423 & RS-449 CCITT V.28
+98630A Breadboard Interface
+98633A Multiprogrammer I/O for the 6944A
+98635A Floating point processor (NS16081) 
+98640A 7-Channel Analog Input
+98642A 4-channel RS-232 Multiplexer
+98643A ethernet interface
+98644A single port RS-232
+98646A DIO to VME adapter
+98647A PCIB interface for 61xxx series instruments
+98658A SCSI Single-Ended typically used for hard disks
+98627A Color Video to 13279B
+98695A 3270 coax interface
+98724A I/O to 98720A SRX Graphics Controller 
+98725A I/O to 98720A SRX Graphics Controller 
