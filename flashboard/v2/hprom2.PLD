@@ -1,0 +1,85 @@
+name hprom2;
+device g22v10;
+partno x;
+date 1/1/1980;
+designer smbaker;
+company sbsoftware;
+revision 1;
+assembly x;
+location x;
+
+PIN 1 = !HPW;
+PIN 2 = A19;
+PIN 3 = A20; 
+PIN 4 = A21;
+PIN 5 = A22;
+PIN 6 = A23;
+PIN 7 = !BAS;
+PIN 8 = !BLDS;
+PIN 9 = !BUDS;
+PIN 10 = EXTRA1;
+PIN 11 = EXTRA2;
+PIN 12 = EXTRA3;
+PIN 13 = GND;
+PIN 14 = !UBUF;
+PIN 15 = !LBUF;
+PIN 16 = !BOARDCS;
+PIN 17 = !WRU;
+PIN 18 = !WRL;
+PIN 19 = !RD;
+PIN 20 = !RAM3_CS;
+PIN 21 = !RAM2_CS;
+PIN 22 = !RAM1_CS;
+PIN 23 = !FLASH_CS;
+
+FIELD MEMADR = [A23..19] ;
+
+/* Memory Map
+ *   Boot Rom  = 000000 - 003FFF
+ *   Block 1   = 020000 - 03FFFF
+ *   Block 2   = 040000 - 05FFFF   *** Basic 4.0 Here (BA19=1, All others 0)
+ *   Block 3   = 060000 - 07FFFF
+ *   Block 4   = 080000 - 09FFFF
+ *   Block 5   = 0A0000 - 0BFFFF
+ *   ...
+ *             = 100000 - 1FFFFF   *** Basic 5.1 here?
+ *   ...
+ *   Block 31  = 3E0000 - 3FFFFF
+ *   Int IO    = 400000 - 5FFFFF
+ *   Ext IO    = 600000 - 7FFFFF
+ *   Test Mon  = 800000 - 8FFFFF
+ *   RAM       = 900000 - FFFFFF  (starts at the top, and goes downward)
+ *
+ * Note: Basic 3.0 image probably goes in the upper half of the ROMs.
+ *
+ * Note: Basic 5.1 image is U1-U6 evens; U9-U14 odds
+ *
+ * Note: 16-bit addressing can be confusing. Dom's schematic clearly
+ *       shows the ROM CS at BA19=1. This is word address 040000, but it
+ *       is byte address 080000. This is reinforced by the 9836 manual 
+ *       stating that the first 512K board starts at 0x80000.
+ */
+
+$DEFINE RAM1_ENABLE 'b'1
+$DEFINE RAM2_ENABLE 'b'1
+$DEFINE RAM3_ENABLE 'b'1
+
+FLASH_SELECT = BAS & MEMADR :[080000..09FFFF] ;
+RAM1_SELECT = RAM1_ENABLE & BAS & MEMADR :[F00000..FFFFFF] ;
+RAM2_SELECT = RAM2_ENABLE & BAS & MEMADR :[E00000..EFFFFF] ;
+RAM3_SELECT = RAM3_ENABLE & BAS & MEMADR :[D00000..DFFFFF] ;
+
+FLASH_CS = FLASH_SELECT;
+
+RAM1_CS = RAM1_SELECT;
+RAM2_CS = RAM2_SELECT;
+RAM3_CS = RAM3_SELECT;
+
+WRL = HPW & BAS & BLDS;
+WRU = HPW & BAS & BUDS;
+RD = !HPW & BAS;
+
+LBUF = (FLASH_SELECT # RAM1_SELECT # RAM2_SELECT # RAM3_SELECT) & BAS & BLDS;
+UBUF = (FLASH_SELECT # RAM1_SELECT # RAM2_SELECT # RAM3_SELECT) & BAS & BUDS;
+
+BOARDCS = (FLASH_SELECT # RAM1_SELECT # RAM2_SELECT # RAM3_SELECT) & BAS;

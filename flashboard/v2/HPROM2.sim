@@ -1,0 +1,110 @@
+%SIGNAL
+PIN   2 =  A19 
+PIN   3 =  A20 
+PIN   4 =  A21 
+PIN   5 =  A22 
+PIN   6 =  A23 
+PIN   7 = !BAS 
+PIN   8 = !BLDS 
+PIN  16 = !BOARDCS 
+PIN   9 = !BUDS 
+PIN  10 =  EXTRA1 
+PIN  11 =  EXTRA2 
+PIN  12 =  EXTRA3 
+PIN  23 = !FLASH_CS 
+PIN  13 =  GND 
+PIN   1 = !HPW 
+PIN  15 = !LBUF 
+PIN  22 = !RAM1_CS 
+PIN  21 = !RAM2_CS 
+PIN  20 = !RAM3_CS 
+PIN  19 = !RD 
+PIN  14 = !UBUF 
+PIN  18 = !WRL 
+PIN  17 = !WRU 
+%END
+
+%FIELD
+FIELD MEMADR = A23,A22,A21,A20,A19
+%END
+
+%EQUATION
+BOARDCS =>
+    A19 & !A20 & !A21 & !A22 & !A23 & !BAS
+  # A20 & A22 & A23 & !BAS
+  # !A20 & A21 & A22 & A23 & !BAS
+
+FLASH_CS =>
+    A19 & !A20 & !A21 & !A22 & !A23 & !BAS
+
+FLASH_SELECT =>
+    A19 & !A20 & !A21 & !A22 & !A23 & BAS
+
+LBUF =>
+    A19 & !A20 & !A21 & !A22 & !A23 & !BAS & !BLDS
+  # A20 & A22 & A23 & !BAS & !BLDS
+  # !A20 & A21 & A22 & A23 & !BAS & !BLDS
+
+RAM1_CS =>
+    A20 & A21 & A22 & A23 & !BAS
+
+RAM1_SELECT =>
+    A20 & A21 & A22 & A23 & BAS
+
+RAM2_CS =>
+    !A20 & A21 & A22 & A23 & !BAS
+
+RAM2_SELECT =>
+    !A20 & A21 & A22 & A23 & BAS
+
+RAM3_CS =>
+    A20 & !A21 & A22 & A23 & !BAS
+
+RAM3_SELECT =>
+    A20 & !A21 & A22 & A23 & BAS
+
+RD =>
+    !BAS & HPW
+
+UBUF =>
+    A19 & !A20 & !A21 & !A22 & !A23 & !BAS & !BUDS
+  # A20 & A22 & A23 & !BAS & !BUDS
+  # !A20 & A21 & A22 & A23 & !BAS & !BUDS
+
+WRL =>
+    !BAS & !BLDS & !HPW
+
+WRU =>
+    !BAS & !BUDS & !HPW
+
+BOARDCS.oe  =>
+    1 
+
+FLASH_CS.oe  =>
+    1 
+
+LBUF.oe  =>
+    1 
+
+RAM1_CS.oe  =>
+    1 
+
+RAM2_CS.oe  =>
+    1 
+
+RAM3_CS.oe  =>
+    1 
+
+RD.oe  =>
+    1 
+
+UBUF.oe  =>
+    1 
+
+WRL.oe  =>
+    1 
+
+WRU.oe  =>
+    1 
+
+%END
