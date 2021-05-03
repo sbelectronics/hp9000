@@ -5,7 +5,7 @@
   {Program "CUPL(WM) Version 5.0a"}
   {DBtype "Schematic"}
   {DBvrev 1.01}
-  {DBtime "Fri Apr 23 16:27:23 2021 "}
+  {DBtime "Sun May 02 16:33:02 2021 "}
   {DBunit "MIL"}
   {DBgrid 10}
   {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
@@ -44,8 +44,8 @@
    {P BUDS' {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
    {P EXTRA1 {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
    {P EXTRA2 {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
-   {P EXTRA3 {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
-   {P GND {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
+   {P GND {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
+   {P EXTRA3 {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
    {P UBUF' {Pt "I/O"}{Lq 0}{Ploc 340 20}}
    {P LBUF' {Pt "I/O"}{Lq 0}{Ploc 340 40}}
    {P BOARDCS' {Pt "I/O"}{Lq 0}{Ploc 340 60}}
@@ -149,8 +149,8 @@
    {T "BUDS'" 140 100}
    {T "EXTRA1" 140 80}
    {T "EXTRA2" 140 60}
-   {T "EXTRA3" 140 40}
-   {T "GND" 140 20}
+   {T "GND" 140 40}
+   {T "EXTRA3" 140 20}
    [Tj "RC"]
    {T "UBUF'" 300 20}
    {T "LBUF'" 300 40}
@@ -207,9 +207,9 @@
    }
    {N EXTRA2
    }
-   {N EXTRA3
-   }
    {N GND
+   }
+   {N EXTRA3
    }
    {N UBUF'
    }
