@@ -1,0 +1,23 @@
+name dtack;
+device g16v8;
+partno x;
+date 1/1/1980;
+designer smbaker;
+company sbsoftware;
+revision 1;
+assembly x;
+location x;
+
+ORDER:  !CARDSEL,  A23, !DELAY, !ENDT, DELSW1, DELSW2, !DTACK;
+
+VECTORS:     1       X       X      X      X       X     Z  /* no cardsel = no dtack */
+             1       0       0      0      1       1     Z  /* no cardsel (fully specified) = no dtack */
+             X       0       X      X      1       X     Z  /* below 0x800000 and SW1 open = no dtack */
+             0       0       X      0      0       X     L  /* below 0x800000 and SW1 closed and ENDT = dtack */             
+             0       0       0      0      1       1     Z  /* below 0x800000 (fully specified) = no dtack */
+             0       1       1      1      X       X     H  /* no endt, no delay = no dtack */
+             0       1       0      1      1       1     L  /* delay triggered and sw2 open = dtack */
+             0       1       0      1      1       0     H  /* delay triggered but sw2 closed = no dtack */             
+             0       1       1      0      1       1     L  /* endt triggered = dtack */
+               
+

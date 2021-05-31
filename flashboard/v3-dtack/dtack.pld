@@ -1,0 +1,39 @@
+name dtack;
+device g16v8;
+partno x;
+date 1/1/1980;
+designer smbaker;
+company sbsoftware;
+revision 1;
+assembly x;
+location x;
+
+PIN 2 = !CARDSEL;
+PIN 3 = A23;
+PIN 4 = A22;
+PIN 5 = A21;
+PIN 6 = !DELAY;
+PIN 7 =  !ENDT;
+PIN 8 = DELSW1; /* DELSW1 open = assume auto-dtack for ROM */
+PIN 9 = DELSW2; /* DELSW2 open = emit dtack from DELAY */
+PIN 10 = GND;
+PIN 18 = DTACK_ENABLE; /* used to feed into DTACK.OE */
+PIN 19 = !DTACK;
+PIN 20 = VCC;
+
+FIELD MEMADR = [A23..A20] ;
+
+/* AUTO-DTACK covers 0x000000 to 0x4FFFFF.
+ * We will never output DTACK from 0x600000 to 0x7FFFFF.
+ * Therefore it suffices to only consider A23.
+ *
+ * If DELSW1 is closed, then we will output DTACK for all
+ * memory ranges. This appears to be necessary on my 310.
+ */
+
+DTACK_ENABLE = CARDSEL & (A23 # (!DELSW1));
+DTACK.OE = DTACK_ENABLE;
+
+DTACK = ENDT # (DELAY & DELSW2);
+
+
