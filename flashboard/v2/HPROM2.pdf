@@ -5,7 +5,7 @@
   {Program "CUPL(WM) Version 5.0a"}
   {DBtype "Schematic"}
   {DBvrev 1.01}
-  {DBtime "Sun May 02 16:33:02 2021 "}
+  {DBtime "Fri May 28 15:23:40 2021 "}
   {DBunit "MIL"}
   {DBgrid 10}
   {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
@@ -42,26 +42,26 @@
    {P BAS' {Pt "INPUT"}{Lq 0}{Ploc 100 140}}
    {P BLDS' {Pt "INPUT"}{Lq 0}{Ploc 100 120}}
    {P BUDS' {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
-   {P EXTRA1 {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
-   {P EXTRA2 {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
+   {P FLASH_EN {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
+   {P BASIC_CH {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
    {P GND {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
-   {P EXTRA3 {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
-   {P UBUF' {Pt "I/O"}{Lq 0}{Ploc 340 20}}
-   {P LBUF' {Pt "I/O"}{Lq 0}{Ploc 340 40}}
-   {P BOARDCS' {Pt "I/O"}{Lq 0}{Ploc 340 60}}
-   {P WRU' {Pt "I/O"}{Lq 0}{Ploc 340 80}}
-   {P WRL' {Pt "I/O"}{Lq 0}{Ploc 340 100}}
-   {P RD' {Pt "I/O"}{Lq 0}{Ploc 340 120}}
-   {P RAM3_CS' {Pt "I/O"}{Lq 0}{Ploc 340 140}}
-   {P RAM2_CS' {Pt "I/O"}{Lq 0}{Ploc 340 160}}
-   {P RAM1_CS' {Pt "I/O"}{Lq 0}{Ploc 340 180}}
-   {P FLASH_CS' {Pt "I/O"}{Lq 0}{Ploc 340 200}}
+   {P RAM_ENAB {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
+   {P UBUF' {Pt "I/O"}{Lq 0}{Ploc 360 20}}
+   {P LBUF' {Pt "I/O"}{Lq 0}{Ploc 360 40}}
+   {P BOARDCS' {Pt "I/O"}{Lq 0}{Ploc 360 60}}
+   {P WRU' {Pt "I/O"}{Lq 0}{Ploc 360 80}}
+   {P WRL' {Pt "I/O"}{Lq 0}{Ploc 360 100}}
+   {P RD' {Pt "I/O"}{Lq 0}{Ploc 360 120}}
+   {P RAM3_CS' {Pt "I/O"}{Lq 0}{Ploc 360 140}}
+   {P RAM2_CS' {Pt "I/O"}{Lq 0}{Ploc 360 160}}
+   {P RAM1_CS' {Pt "I/O"}{Lq 0}{Ploc 360 180}}
+   {P FLASH_CS' {Pt "I/O"}{Lq 0}{Ploc 360 200}}
   }
 
   {PKG
    [Ly "REFDES"]
    [Ts 25][Tj "CB"][Tr 0][Tm "N"]
-   {Rdl 220 310}
+   {Rdl 230 310}
 
    [Ly "PINNUM"]
    [Ts 15][Tj "RC"]
@@ -80,16 +80,16 @@
    {Pnl 120 50}
    {Pnl 120 30}
    [Ts 15][Tj "LC"]
-   {Pnl 320 30}
-   {Pnl 320 50}
-   {Pnl 320 70}
-   {Pnl 320 90}
-   {Pnl 320 110}
-   {Pnl 320 130}
-   {Pnl 320 150}
-   {Pnl 320 170}
-   {Pnl 320 190}
-   {Pnl 320 210}
+   {Pnl 340 30}
+   {Pnl 340 50}
+   {Pnl 340 70}
+   {Pnl 340 90}
+   {Pnl 340 110}
+   {Pnl 340 130}
+   {Pnl 340 150}
+   {Pnl 340 170}
+   {Pnl 340 190}
+   {Pnl 340 210}
 
    {Sd A 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23}
   }
@@ -97,7 +97,7 @@
   {PIC
    [Ly "GATE"]
    [Ts 15][Tj "LC"][Tr 0][Tm "N"]
-   {R 130 300 310 0}
+   {R 130 300 330 0}
    {L 120 280 100 280}
    {C 125 280 5}
    {L 130 290 140 280 130 270}
@@ -116,26 +116,26 @@
    {L 130 60 100 60}
    {L 130 40 100 40}
    {L 130 20 100 20}
-   {C 315 20 5}
-   {L 320 20 340 20}
-   {C 315 40 5}
-   {L 320 40 340 40}
-   {C 315 60 5}
-   {L 320 60 340 60}
-   {C 315 80 5}
-   {L 320 80 340 80}
-   {C 315 100 5}
-   {L 320 100 340 100}
-   {C 315 120 5}
-   {L 320 120 340 120}
-   {C 315 140 5}
-   {L 320 140 340 140}
-   {C 315 160 5}
-   {L 320 160 340 160}
-   {C 315 180 5}
-   {L 320 180 340 180}
-   {C 315 200 5}
-   {L 320 200 340 200}
+   {C 335 20 5}
+   {L 340 20 360 20}
+   {C 335 40 5}
+   {L 340 40 360 40}
+   {C 335 60 5}
+   {L 340 60 360 60}
+   {C 335 80 5}
+   {L 340 80 360 80}
+   {C 335 100 5}
+   {L 340 100 360 100}
+   {C 335 120 5}
+   {L 340 120 360 120}
+   {C 335 140 5}
+   {L 340 140 360 140}
+   {C 335 160 5}
+   {L 340 160 360 160}
+   {C 335 180 5}
+   {L 340 180 360 180}
+   {C 335 200 5}
+   {L 340 200 360 200}
    [Ly "PINNAM"]
    [Tj "LC"]
    {T "HPW'" 140 280}
@@ -147,24 +147,24 @@
    {T "BAS'" 140 140}
    {T "BLDS'" 140 120}
    {T "BUDS'" 140 100}
-   {T "EXTRA1" 140 80}
-   {T "EXTRA2" 140 60}
+   {T "FLASH_EN" 140 80}
+   {T "BASIC_CH" 140 60}
    {T "GND" 140 40}
-   {T "EXTRA3" 140 20}
+   {T "RAM_ENAB" 140 20}
    [Tj "RC"]
-   {T "UBUF'" 300 20}
-   {T "LBUF'" 300 40}
-   {T "BOARDCS'" 300 60}
-   {T "WRU'" 300 80}
-   {T "WRL'" 300 100}
-   {T "RD'" 300 120}
-   {T "RAM3_CS'" 300 140}
-   {T "RAM2_CS'" 300 160}
-   {T "RAM1_CS'" 300 180}
-   {T "FLASH_CS'" 300 200}
+   {T "UBUF'" 320 20}
+   {T "LBUF'" 320 40}
+   {T "BOARDCS'" 320 60}
+   {T "WRU'" 320 80}
+   {T "WRL'" 320 100}
+   {T "RD'" 320 120}
+   {T "RAM3_CS'" 320 140}
+   {T "RAM2_CS'" 320 160}
+   {T "RAM1_CS'" 320 180}
+   {T "FLASH_CS'" 320 200}
    [Ly "DEVICE"]
    [Tj "CT"]
-   {T "G22V10" 220 -10}
+   {T "G22V10" 230 -10}
   }
 
   {ATR
@@ -175,7 +175,7 @@
    {EX
     [Ly "ATTR2"]
     [Ts 12][Tj "CT"][Tr 0][Tm "N"]
-    {At PLD Y:\PROJECTS\PI\HP9000\FLASHBOARD\V2\HPROM2 220 300}
+    {At PLD Y:\PROJECTS\PI\HP9000\FLASHBOARD\V2\HPROM2 230 300}
    }
   }
  }
@@ -203,13 +203,13 @@
    }
    {N BUDS'
    }
-   {N EXTRA1
+   {N FLASH_EN
    }
-   {N EXTRA2
+   {N BASIC_CH
    }
    {N GND
    }
-   {N EXTRA3
+   {N RAM_ENAB
    }
    {N UBUF'
    }
