@@ -40,10 +40,10 @@ FIELD MEMADR = [A23..19] ;
  *   Block 2   = 040000 - 05FFFF   *** Basic 4.0 Here (BA19=1, All others 0)
  *   Block 3   = 060000 - 07FFFF
  *   Block 4   = 080000 - 09FFFF
- *   Block 5   = 0A0000 - 0BFFFF   *** Basic 4.0 ROM extends this far */
+ *   Block 5   = 0A0000 - 0BFFFF   *** Basic 4.0 ROM extends this far
  *   ...
  *             = 100000 - 1FFFFF   *** Basic 5.1 here?
- *             = 200000 - 27FFFF   *** HPL is relocatable, and we can put it here */
+ *             = 200000 - 27FFFF   *** HPL is relocatable, and we can put it here
  *   ...
  *   Block 31  = 3E0000 - 3FFFFF
  *   Int IO    = 400000 - 5FFFFF
