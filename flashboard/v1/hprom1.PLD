@@ -1,4 +1,4 @@
-name hprom2;
+name hprom1;
 device g16v8;
 partno x;
 date 1/1/1980;
@@ -39,7 +39,7 @@ FIELD MEMADR = [A23..19] ;
  *   Block 4   = 080000 - 09FFFF
  *   Block 5   = 0A0000 - 0BFFFF
  *   ...
- *             = 100000 - 1FFFFF   *** Basic 5.1 here?
+ *             = 100000 - 1FFFFF   *** Basic 5.1 here? (BA19=X, BA20=1 All others 0)
  *   ...
  *   Block 31  = 3E0000 - 3FFFFF
  *   Int IO    = 400000 - 5FFFFF
@@ -57,11 +57,17 @@ FIELD MEMADR = [A23..19] ;
  *       stating that the first 512K board starts at 0x80000.
  */
 
-$DEFINE RAM1_ENABLE 'b'1
-$DEFINE RAM2_ENABLE 'b'1
-$DEFINE RAM3_ENABLE 'b'1
+$DEFINE RAM1_ENABLE ('b'1)
+$DEFINE RAM2_ENABLE ('b'1)
+$DEFINE RAM3_ENABLE ('b'1)
 
-FLASH_SELECT = BAS & MEMADR :[080000..09FFFF] ;
+$DEFINE FLASH_ENABLE ('b'1)
+$DEFINE BASIC_CHOICE ('b'0)  /* 0 = B40, 1 = B51 */
+
+B40_SELECT = (!BASIC_CHOICE) & BAS & MEMADR :[080000..0FFFFF];
+B51_SELECT = BASIC_CHOICE & BAS & MEMADR :[100000..1FFFFF];
+
+FLASH_SELECT = FLASH_ENABLE & (B40_SELECT # B51_SELECT);
 RAM1_SELECT = RAM1_ENABLE & BAS & MEMADR :[F00000..FFFFFF] ;
 RAM2_SELECT = RAM2_ENABLE & BAS & MEMADR :[E00000..EFFFFF] ;
 RAM3_SELECT = RAM3_ENABLE & BAS & MEMADR :[D00000..DFFFFF] ;

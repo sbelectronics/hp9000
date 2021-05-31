@@ -1,11 +1,11 @@
-{COMPONENT Y:\PROJECTS\PI\HP9836\FLASHBOARD-BLDS\HPROM2.SYM
+{COMPONENT Y:\PROJECTS\PI\HP9000\FLASHBOARD\V1\HPROM1.SYM
 
  {ENVIRONMENT
   {PDIFvrev 3.00}
   {Program "CUPL(WM) Version 5.0a"}
   {DBtype "Schematic"}
   {DBvrev 1.01}
-  {DBtime "Fri Apr 23 14:45:11 2021 "}
+  {DBtime "Tue May 04 11:46:57 2021 "}
   {DBunit "MIL"}
   {DBgrid 10}
   {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
@@ -159,7 +159,7 @@
    {EX
     [Ly "ATTR2"]
     [Ts 12][Tj "CT"][Tr 0][Tm "N"]
-    {At PLD Y:\PROJECTS\PI\HP9836\FLASHBOARD-BLDS\HPROM2 225 360}
+    {At PLD Y:\PROJECTS\PI\HP9000\FLASHBOARD\V1\HPROM1 225 360}
    }
   }
  }

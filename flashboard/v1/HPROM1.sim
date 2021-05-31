@@ -26,6 +26,12 @@ FIELD MEMADR = A23,A22,A21,A20,A19
 %END
 
 %EQUATION
+B40_SELECT =>
+    A19 & !A20 & !A21 & !A22 & !A23 & BAS
+
+B51_SELECT =>
+    0 
+
 BOARDCS =>
     A19 & !A20 & !A21 & !A22 & !A23 & !BAS
   # A20 & A22 & A23 & !BAS
