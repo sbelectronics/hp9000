@@ -1,0 +1,95 @@
+name ram;
+device g22v10;
+partno x;
+date 1/1/1980;
+designer smbaker;
+company sbsoftware;
+revision 1;
+assembly x;
+location x;
+
+PIN 1 = !HPW;
+PIN 2 = A19;
+PIN 3 = A20; 
+PIN 4 = A21;
+PIN 5 = A22;
+PIN 6 = A23;
+PIN 7 = !BAS;
+PIN 8 = !BLDS;
+PIN 9 = !BUDS;
+PIN 10 = RAM4_ENABLE;
+PIN 11 = RAM_START;    /* Open = first RAM board, closed = second ram board */
+PIN 12 = GND;
+PIN 13 = RAM_ENABLE;
+PIN 14 = !UBUF;
+PIN 15 = !LBUF;
+PIN 16 = !BOARDCS;
+PIN 17 = !WRU;
+PIN 18 = !WRL;
+PIN 19 = !RD;
+PIN 20 = !RAM3_CS;
+PIN 21 = !RAM2_CS;
+PIN 22 = !RAM1_CS;
+PIN 23 = !RAM4_CS;
+
+FIELD MEMADR = [A23..19] ;
+
+/* Memory Map
+ *   Boot Rom  = 000000 - 003FFF
+ *   Block 1   = 020000 - 03FFFF
+ *   Block 2   = 040000 - 05FFFF   *** Basic 4.0 Here (BA19=1, All others 0)
+ *   Block 3   = 060000 - 07FFFF
+ *   Block 4   = 080000 - 09FFFF
+ *   Block 5   = 0A0000 - 0BFFFF   *** Basic 4.0 ROM extends this far
+ *   ...
+ *             = 100000 - 1FFFFF   *** Basic 5.1 here?
+ *             = 200000 - 27FFFF   *** HPL is relocatable, and we can put it here
+ *   ...
+ *   Block 31  = 3E0000 - 3FFFFF
+ *   Int IO    = 400000 - 5FFFFF
+ *   Ext IO    = 600000 - 7FFFFF
+ *   Test Mon  = 800000 - 8FFFFF
+ *   RAM       = 900000 - FFFFFF  (starts at the top, and goes downward)
+ *
+ */
+
+$DEFINE RAM1_ENABLE ('b'1)
+$DEFINE RAM2_ENABLE ('b'1)
+$DEFINE RAM3_ENABLE ('b'1)
+
+/* When used as the first RAM board in the system, start at the top
+ */
+RAM1_SELECT = RAM_ENABLE & RAM_START & RAM1_ENABLE & BAS & MEMADR :[F00000..FFFFFF] ;
+RAM2_SELECT = RAM_ENABLE & RAM_START & RAM2_ENABLE & BAS & MEMADR :[E00000..EFFFFF] ;
+RAM3_SELECT = RAM_ENABLE & RAM_START & RAM3_ENABLE & BAS & MEMADR :[D00000..DFFFFF] ;
+RAM4_SELECT = RAM_ENABLE & RAM_START & RAM4_ENABLE & BAS & MEMADR :[C00000..CFFFFF] ;
+
+/* When used as the second RAM board in the system, start at C00000. Note
+ * that if you use two board, this would overlap with RAM4 on the first
+ * board, so make sure to disable RAM4_SELECT via dip switch on the first
+ * board.
+ *
+ * The reason a two board configuration uses 3MB for the first board and
+ * 4MB for the second is to enable compatibility with my BASIC + 3MB board.
+ */
+
+RAM21_SELECT = RAM_ENABLE & (!RAM_START) & RAM1_ENABLE & BAS & MEMADR :[C00000..CFFFFF] ;
+RAM22_SELECT = RAM_ENABLE & (!RAM_START) & RAM2_ENABLE & BAS & MEMADR :[B00000..BFFFFF] ;
+RAM23_SELECT = RAM_ENABLE & (!RAM_START) & RAM3_ENABLE & BAS & MEMADR :[A00000..AFFFFF] ;
+RAM24_SELECT = RAM_ENABLE & (!RAM_START) & RAM4_ENABLE & BAS & MEMADR :[900000..9FFFFF] ;
+
+ANY_RAM_SELECT = RAM1_SELECT # RAM2_SELECT # RAM3_SELECT # RAM4_SELECT # RAM21_SELECT # RAM22_SELECT # RAM23_SELECT # RAM24_SELECT;
+
+RAM1_CS = RAM1_SELECT # RAM21_SELECT;
+RAM2_CS = RAM2_SELECT # RAM22_SELECT;
+RAM3_CS = RAM3_SELECT # RAM23_SELECT;
+RAM4_CS = RAM4_SELECT # RAM24_SELECT;
+
+WRL = HPW & BAS & BLDS;
+WRU = HPW & BAS & BUDS;
+RD = !HPW & BAS;
+
+LBUF = ANY_RAM_SELECT & BAS & BLDS;
+UBUF = ANY_RAM_SELECT & BAS & BUDS;
+
+BOARDCS = ANY_RAM_SELECT & BAS;
