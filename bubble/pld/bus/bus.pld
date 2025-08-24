@@ -1,0 +1,57 @@
+Name bus;
+Partno G22V10#;
+Revision;
+Date 09/1/2023;
+Designer Scott Baker;
+Company ;
+Location ;
+Assembly hp 9000 bubble board;
+Device G22V10;
+
+/* Inputs: */
+Pin 1 = NC1;             /*                                      */
+Pin 2 = BA1;             /* A1                                   */
+Pin 3 = BA2;             /* A2                                   */
+Pin 4 = BA3;             /* A3                                   */
+Pin 5 = !BLDS;           /* lower data select                    */
+Pin 6 = BRW;             /* high on read, low on write           */
+Pin 7 = !CARDSEL;        /* card select                          */
+Pin 8 = BMTIME;          /* timing signal for bubble IO          */
+Pin 9 = !INTDTACK;       /* timing signal for DTACK              */
+Pin 10 = !RESET_BUS;     /* reset from bus                       */
+Pin 11 = NC11;
+Pin 13 = NC13;
+
+/* Outputs:   */
+Pin 23 = !SYSRSTL;
+Pin 22 = !WRINTEN;
+Pin 21 = !RDID;
+Pin 20 = !RDINT;
+Pin 19 = !RDZ;
+Pin 18 = !BMWR;
+Pin 17 = !BMRD;
+Pin 16 = !DEN;
+Pin 15 = BDIR;
+Pin 14 = NC14;
+
+_BR = BRW;                    /* true if read */
+_BW = !BRW;                   /* true if write */
+
+_DEN = CARDSEL & BLDS;        /* data bus enable, true if card is selected on lower 8-bits */
+_DTACKR = _BR # (!INTDTACK);  /* not-DTACK or READ */
+
+_WRRST = (!BA1) & (!BA2) & (!BA3) & _BW & _DEN & _DTACKR;
+WRINTEN = (BA1) & (!BA2) & (!BA3) & _BW & _DEN & _DTACKR;
+
+RDID =   (!BA1) & (!BA2) & (!BA3) & _BR & _DEN & _DTACKR;
+RDINT =   (BA1) & (!BA2) & (!BA3) & _BR & _DEN & _DTACKR;
+RDZ =    (!BA1) &  (BA2) & (!BA3) & _BR & _DEN & _DTACKR;
+
+BMWR =            (!BA2) &  (BA3) & _BW & _DEN & _DTACKR & BMTIME;
+
+BMRD =            (!BA2) &  (BA3) & _BR & _DEN & _DTACKR & BMTIME;
+
+DEN = _DEN;
+BDIR = _BW; /* low is B->A, high is A->B */
+
+SYSRSTL = _WRRST # RESET_BUS;

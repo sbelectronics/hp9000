@@ -1,0 +1,64 @@
+Name status;
+Partno G22V10#;
+Revision;
+Date 09/1/2023;
+Designer Scott Baker;
+Company ;
+Location ;
+Assembly hp 9000 bubble board;
+Device G22V10;
+
+/* Inputs: */
+Pin 1 = NC1;        /*                                      */
+Pin 2 = INTEN;      /* Interrupt enable                     */
+Pin 3 = NC3;        /*                                      */
+Pin 4 = INTSW1;     /*                                      */
+Pin 5 = INTSW2;     /*                                      */
+Pin 6 = !RDID;      /*                                      */
+Pin 7 = !RDINT;     /*                                      */
+Pin 8 = !RDZ;       /*                                      */
+Pin 9 = BMDRQ;      /*                                      */
+Pin 10 = BMINT;     /*                                      */
+Pin 11 = NC11;
+Pin 13 = NC13;
+
+/* Outputs:   */
+Pin 23 = D0;
+Pin 22 = D1;
+Pin 21 = D2;
+Pin 20 = D3;
+Pin 19 = D4;
+Pin 18 = D5;
+Pin 17 = D6;
+Pin 16 = D7;
+Pin 15 = INTREQ;
+Pin 14 = OUTEN;    /* temporary to hold output enable */
+
+OUTEN = RDID # RDINT # RDZ;
+
+D0 = 'b'0;
+D0.OE = OUTEN;
+
+D1 = RDID;
+D1.OE = OUTEN;
+
+D2 = RDID;
+D2.OE = OUTEN;
+
+D3 = RDID;
+D3.OE = OUTEN;
+
+D4 = RDID # (RDINT & INTSW1);
+D4.OE = OUTEN;
+
+D5 = (RDINT & INTSW2);
+D5.OE = OUTEN;
+
+D6 = (RDINT & INTREQ);
+D6.OE = OUTEN;
+
+D7 = (RDINT & INTEN);
+D7.OE = OUTEN;
+
+INTREQ = BMDRQ # BMINT;
+
